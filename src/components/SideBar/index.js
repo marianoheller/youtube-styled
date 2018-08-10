@@ -24,7 +24,7 @@ const SideBarContainer = styled.div`
     height: 4rem;
     width: 100%;
     max-width: 100%;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
