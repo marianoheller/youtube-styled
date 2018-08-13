@@ -1,4 +1,4 @@
-import searchActions from '../actions/search';
+import * as searchActions from '../actions/search';
 
 const initState = {
   input: '',

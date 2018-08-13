@@ -1,8 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import TopBar from './components/TopBar';
 import Landing from './containers/Landing';
+
+import * as searchActions from './actions/search';
 
 const AppContainer = styled.div`
   display: flex;
@@ -20,9 +23,10 @@ const ContentContainer = styled.div`
 
 class App extends React.Component {
   render() {
+    const { searchInput, setSearchInput } = this.props;
     return (
       <AppContainer>
-        <TopBar />
+        <TopBar searchInput={searchInput} onInputChange={setSearchInput} />
         <ContentContainer>
           <Landing />
         </ContentContainer>
@@ -31,4 +35,12 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = ({ search }) => ({
+  searchInput: search.input,
+});
+
+const mapDispatchToProps = dispatch => ({
+  setSearchInput: input => dispatch(searchActions.setInput(input)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

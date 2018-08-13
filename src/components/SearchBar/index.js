@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FaSearch } from 'react-icons/fa';
 
 
 const Container = styled.div`
@@ -10,8 +11,8 @@ const Container = styled.div`
 
   border-width: 1px;
   border-color: rgba(10,10,10,0.25);
-  border-style: solid;  
-`
+  border-style: solid;
+`;
 
 const StyledInput = styled.input`
   flex: 1;
@@ -27,6 +28,9 @@ const SearchButton = styled.button`
   border: none;
   cursor: pointer;
   background-color: rgba(0,0,0,0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   appearance: unset;
   &:focus {
@@ -35,10 +39,26 @@ const SearchButton = styled.button`
 `;
 
 
+export default class SearchBar extends React.Component {
+  constructor() {
+    super();
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
 
-export default () => (
-  <Container>
-    <StyledInput type="text" />
-    <SearchButton>SEARCH</SearchButton>
-  </Container>
-);
+  handleInputChange(e) {
+    const { onInputChange } = this.props;
+    onInputChange(e.target.value);
+  }
+
+  render() {
+    const { searchInput } = this.props;
+    return (
+      <Container>
+        <StyledInput type="text" value={searchInput} onChange={this.handleInputChange}  />
+        <SearchButton>
+          <FaSearch />
+        </SearchButton>
+      </Container>
+    );
+  }
+};
