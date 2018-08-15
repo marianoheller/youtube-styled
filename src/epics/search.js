@@ -14,6 +14,7 @@ const inputTriggerEpic = (action$, state$) => action$
   .debounceTime(500)
   .switchMap(action => Observable.of(searchActions.search.request(action.input)));
 
+
 const searchEpic = (action$, state$) => action$
   .ofType(searchActions.SEARCH.REQUEST)
   .filter(action => action.input)
@@ -23,7 +24,7 @@ const searchEpic = (action$, state$) => action$
     )
     .switchMap(r => Observable.of(searchActions.search.success(r.data)))
     .catch(e => Observable.of(searchActions.search.failure(e.message)))
-  ))
+  ));
 
 
 export default combineEpics(
