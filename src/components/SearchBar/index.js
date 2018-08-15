@@ -43,6 +43,8 @@ export default class SearchBar extends React.Component {
   constructor() {
     super();
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+    this.handleEnter = this.handleEnter.bind(this);
   }
 
   handleInputChange(e) {
@@ -50,12 +52,28 @@ export default class SearchBar extends React.Component {
     onInputChange(e.target.value);
   }
 
+  handleEnter(e) {
+    if (e.keyCode === 13) {
+      this.handleSearch();
+    }
+  }
+
+  handleSearch() {
+    const { searchInput, search } = this.props;
+    search(searchInput);
+  }
+
   render() {
     const { searchInput } = this.props;
     return (
       <Container>
-        <StyledInput type="text" value={searchInput} onChange={this.handleInputChange}  />
-        <SearchButton>
+        <StyledInput
+          type="text"
+          value={searchInput}
+          onChange={this.handleInputChange}
+          onKeyDown={this.handleEnter}
+        />
+        <SearchButton onClick={this.handleSearch}>
           <FaSearch />
         </SearchButton>
       </Container>

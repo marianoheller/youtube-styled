@@ -58,7 +58,11 @@ export default props => (
     </ContainerLeft>
     
     <ContainerCenter>
-      <SearchBar searchInput={props.searchInput} onInputChange={props.onInputChange}/>
+      <SearchBar
+        searchInput={props.searchInput}
+        onInputChange={props.onInputChange}
+        search={props.search}
+      />
     </ContainerCenter>
 
     <ContainerRight>

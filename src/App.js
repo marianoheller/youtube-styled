@@ -23,10 +23,14 @@ const ContentContainer = styled.div`
 
 class App extends React.Component {
   render() {
-    const { searchInput, setSearchInput } = this.props;
+    const { searchInput, setSearchInput, search } = this.props;
     return (
       <AppContainer>
-        <TopBar searchInput={searchInput} onInputChange={setSearchInput} />
+        <TopBar
+          searchInput={searchInput}
+          onInputChange={setSearchInput}
+          search={search}
+        />
         <ContentContainer>
           <Landing />
         </ContentContainer>
@@ -41,6 +45,7 @@ const mapStateToProps = ({ search }) => ({
 
 const mapDispatchToProps = dispatch => ({
   setSearchInput: input => dispatch(searchActions.setInput(input)),
+  search: input => dispatch(searchActions.search.request(input)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
