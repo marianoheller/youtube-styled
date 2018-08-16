@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -20,6 +21,9 @@ const TopBarContainer = styled.div`
 
   box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.12);
   z-index: ${({ theme }) => theme.zIndex.ref + 2 };
+
+  transition: transform 1s;
+  transform: ${({ isHidden }) => `translate3d(0, ${isHidden ? '-100%' : '0%'}, 0)`};
 `;
 
 const _Container = styled.div`
@@ -50,7 +54,7 @@ const SearchBarContainer = styled.div``;
 
 
 export default props => (
-  <TopBarContainer>
+  <TopBarContainer isHidden={props.isHidden}>
     <ContainerLeft>
       <LogoContainer to="/">
         LOGO

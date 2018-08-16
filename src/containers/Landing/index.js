@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import SideBar from '../../components/SideBar';
-import Feed from '../../components/Feed';
+import FeedGrid from '../../components/FeedGrid';
 
 import * as searchActions from '../../actions/search';
 
@@ -17,7 +17,7 @@ const Container = styled.div`
 const Landing = props => (
   <Container>
     <SideBar/>
-    <Feed />
+    <FeedGrid />
   </Container>
 )
 

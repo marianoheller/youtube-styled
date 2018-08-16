@@ -36,8 +36,6 @@ const SideBarContainer = styled.div`
 
 export default () => (
   <SideBarContainer>
-    SIDEBAR
-    <div>item</div>
     <div>item</div>
     <div>item</div>
     <div>item</div>
