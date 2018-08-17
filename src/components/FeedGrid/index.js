@@ -9,7 +9,7 @@ const Container = styled.div`
   padding: 2rem;
   
   @media only screen and (max-width: 600px) {
-    margin-top: 0.5rem;
+    margin-top: 3rem;
   }
 `;
 
@@ -22,6 +22,12 @@ const Grid = styled.div`
   /* grid-template-rows: repeat(3, 33% [row-start]); */
   grid-gap: 1rem;
   margin-bottom: 5rem;
+
+  @media only screen and (max-width: 600px) {
+    & > div:last-child {
+      margin-bottom: 3.5rem;
+    }
+  }
 `
 
 export default () => {
@@ -30,7 +36,7 @@ export default () => {
     <Container>
       <Grid>
         {items.map((e, i) => <Item key={`${e}_${i}`}>{e}</Item>)}
-      </Grid>      
+      </Grid>
     </Container>
   )
 }
