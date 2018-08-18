@@ -20,9 +20,11 @@ const searchEpic = (action$, state$) => action$
   .filter(action => action.input)
   .switchMap(action => (
     Observable.from(
-      axios.get(`${BASE_URL}/search?part=snippet&q=${action.input}&type=video&key=${YT_KEY}`)
+      axios.get(
+        `${BASE_URL}/search?part=snippet&q=${action.input}&type=video&maxResults=10&key=${YT_KEY}&nextPageToken=${'asd'}`
+      )
     )
-    .switchMap(r => Observable.of(searchActions.search.success(r.data)))
+    .switchMap(r => Observable.of(searchActions.search.success(r.data.items, r.data.nextPageToken)))
     .catch(e => Observable.of(searchActions.search.failure(e.message)))
   ));
 

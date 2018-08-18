@@ -17,7 +17,7 @@ export const SEARCH = createRequestTypes('SEARCH');
 
 export const search = {
   request: input => createAction(SEARCH.REQUEST, { input }),
-  success: results => createAction(SEARCH.SUCCESS, { results }),
+  success: (results, nextPageToken) => createAction(SEARCH.SUCCESS, { results, nextPageToken }),
   failure: error => createAction(SEARCH.FAILURE, { error }),
 };
 

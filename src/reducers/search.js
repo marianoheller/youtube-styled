@@ -2,6 +2,7 @@ import * as searchActions from '../actions/search';
 
 const initState = {
   input: '',
+  nextPageToken: '',
   results: [],
   error: null,
   isFetching: false,
@@ -27,6 +28,7 @@ export default (state = initState, action) => {
         isFetching: false,
         error: null,
         results: action.results,
+        nextPageToken: action.nextPageToken,
       };
     case searchActions.SEARCH.FAILURE:
       return {
