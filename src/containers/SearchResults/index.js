@@ -30,6 +30,7 @@ class SearchResults extends React.Component {
         {results.map((r, i) => (
           <HorizontalBig key={`${r.id.videoId}${i}`} {...r} />
         ))}
+        <VisibilitySensor onChange={onChange} />
       </ResultsContainer>
     )
   }
