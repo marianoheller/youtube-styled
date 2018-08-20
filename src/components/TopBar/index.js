@@ -50,10 +50,8 @@ const LogoContainer = styled(Link)`
   text-align: center;
 `;
 
-const SearchBarContainer = styled.div``;
 
-
-export default props => (
+const TopBar = props => (
   <TopBarContainer isHidden={props.isHidden}>
     <ContainerLeft>
       <LogoContainer to="/">
@@ -74,3 +72,11 @@ export default props => (
     </ContainerRight>
   </TopBarContainer>
 );
+
+TopBar.propTypes = {
+  searchInput: PropTypes.string.isRequired,
+  search: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+}
+
+export default TopBar;

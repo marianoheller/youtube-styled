@@ -43,16 +43,6 @@ display: flex;
 flex-direction: column;
 `;
 
-const Title = styled.div`
-font-size: 0.9rem;
-`;
-
-const Info = styled.div`
-font-size: 0.75rem;
-color: hsl(0, 0%, 53.3%);;
-`;
-
-
 const MenuContainer = styled.div``;
 
 const HorizontalBig = props => {

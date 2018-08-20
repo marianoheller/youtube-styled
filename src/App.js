@@ -30,10 +30,6 @@ const ContentContainer = styled.div`
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      direction:'',
-      lastScrollPos:0
-    };
 
     this.handleScroll = this.handleScroll.bind(this);
   }

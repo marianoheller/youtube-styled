@@ -6,7 +6,7 @@ import { combineEpics } from 'redux-observable';
 
 const topBarHideEpic = (action$, state$) => action$
   .ofType(navActions.SCROLL_DIR_DOWN)
-  // .throttleTime(1000)
+  .throttleTime(1000)
   .switchMap(() => (
     Observable.of(navActions.hideTopBar())
     .takeUntil(action$.ofType(navActions.SCROLL_DIR_UP))
@@ -15,7 +15,7 @@ const topBarHideEpic = (action$, state$) => action$
 
 const topBarShowEpic = (action$, state$) => action$
   .ofType(navActions.SCROLL_DIR_UP)
-  // .throttleTime(1000)
+  .throttleTime(1000)
   .switchMap(() => (
     Observable.of(navActions.showTopBar())
     .takeUntil(action$.ofType(navActions.SCROLL_DIR_DOWN))

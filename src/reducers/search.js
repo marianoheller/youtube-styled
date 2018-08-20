@@ -2,9 +2,10 @@ import * as searchActions from '../actions/search';
 
 const initState = {
   input: '',
+  searchedInput: '',
   nextPageToken: '',
   results: [],
-  error: null,
+  error: '',
   isFetching: false,
 }
 
@@ -17,24 +18,35 @@ export default (state = initState, action) => {
         input: action.input,
       };
     case searchActions.SEARCH.REQUEST:
+    case searchActions.SEARCH_MORE.REQUEST:
       return {
         ...state,
+        searchedInput: action.input,
         isFetching: true,
-        error: null,
+        error: '',
+      };
+    case searchActions.SEARCH.FAILURE:
+    case searchActions.SEARCH_MORE.FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.error,
       };
     case searchActions.SEARCH.SUCCESS:
       return {
         ...state,
         isFetching: false,
-        error: null,
+        error: '',
         results: action.results,
         nextPageToken: action.nextPageToken,
       };
-    case searchActions.SEARCH.FAILURE:
+    case searchActions.SEARCH_MORE.SUCCESS:
       return {
         ...state,
         isFetching: false,
-        error: action.error,
+        error: '',
+        results: [...state.results ,...action.results],
+        nextPageToken: action.nextPageToken,
       };
     default:
       return state;

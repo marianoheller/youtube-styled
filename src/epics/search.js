@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from 'axios';
 
 import { Observable } from 'rxjs';
@@ -8,10 +9,13 @@ const BASE_URL = 'https://www.googleapis.com/youtube/v3';
 const YT_KEY = process.env.REACT_APP_YT_KEY;
 
 
+/**
+ * Even with debounce it doesn't give a good UX
+ */
 const inputTriggerEpic = (action$, state$) => action$
   .ofType(searchActions.SET_INPUT)
   .filter(action => action.input)
-  .debounceTime(500)
+  .debounceTime(1000)
   .switchMap(action => Observable.of(searchActions.search.request(action.input)));
 
 
@@ -21,15 +25,28 @@ const searchEpic = (action$, state$) => action$
   .switchMap(action => (
     Observable.from(
       axios.get(
-        `${BASE_URL}/search?part=snippet&q=${action.input}&type=video&maxResults=10&key=${YT_KEY}&nextPageToken=${'asd'}`
+        `${BASE_URL}/search?part=snippet&q=${action.input}&type=video&maxResults=10&key=${YT_KEY}`
       )
     )
     .switchMap(r => Observable.of(searchActions.search.success(r.data.items, r.data.nextPageToken)))
     .catch(e => Observable.of(searchActions.search.failure(e.message)))
   ));
 
+const searchMoreEpic = (action$, state$) => action$
+  .ofType(searchActions.SEARCH_MORE.REQUEST)
+  .switchMap(action => (
+    Observable.from(
+      axios.get(
+        `${BASE_URL}/search?part=snippet&q=${action.input}&type=video&maxResults=10&key=${YT_KEY}&pageToken=${action.nextPageToken}`
+      )
+    )
+    .switchMap(r => Observable.of(searchActions.searchMore.success(r.data.items, r.data.nextPageToken)))
+    .catch(e => Observable.of(searchActions.searchMore.failure(e.message)))
+  ));
+
 
 export default combineEpics(
   searchEpic,
-  inputTriggerEpic,
+  searchMoreEpic,
+  // inputTriggerEpic,
 )

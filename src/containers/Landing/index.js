@@ -5,8 +5,6 @@ import styled from 'styled-components';
 import SideBar from '../../components/SideBar';
 import FeedGrid from '../../components/FeedGrid';
 
-import * as searchActions from '../../actions/search';
-
 const Container = styled.div`
   width: 100%;
   height: 100%;
