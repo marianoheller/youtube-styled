@@ -34,9 +34,12 @@ const _Container = styled.div`
 `;
 
 const ContainerLeft = _Container.extend`
+  padding-left: 1rem;
 `;
 
-const ContainerRight = _Container.extend``;
+const ContainerRight = _Container.extend`
+  padding-right: 1rem;
+`;
 
 const LogoContainer = styled(Link)`
   text-decoration: none;
@@ -44,7 +47,6 @@ const LogoContainer = styled(Link)`
   display: flex;
   justify-content: center;
   text-align: center;
-  padding-left: 1rem;
 `;
 
 const Logo = styled.img`
@@ -61,8 +63,6 @@ const TopBar = props => (
 
     <ContainerRight>
       <SearchBar
-        searchInput={props.searchInput}
-        onInputChange={props.onInputChange}
         search={props.search}
       />
     </ContainerRight>
@@ -70,9 +70,8 @@ const TopBar = props => (
 );
 
 TopBar.propTypes = {
-  searchInput: PropTypes.string.isRequired,
   search: PropTypes.func.isRequired,
-  onInputChange: PropTypes.func.isRequired,
-}
+  isHidden: PropTypes.bool.isRequired,
+};
 
 export default TopBar;

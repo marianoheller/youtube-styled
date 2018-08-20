@@ -77,10 +77,7 @@ const VerticalBig = props => {
 
 VerticalBig.propTypes = {
   etag: PropTypes.string.isRequired,
-  id: PropTypes.shape({
-    kind: PropTypes.string.isRequired,
-    videoId: PropTypes.string.isRequired,
-  }),
+  id: PropTypes.string.isRequired,
   kind: PropTypes.string.isRequired,
   snippet: PropTypes.shape({
     channelId: PropTypes.string.isRequired,

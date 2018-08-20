@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import SideBar from '../../components/SideBar';
+/* import SideBar from '../../components/SideBar'; */
 import FeedGrid from '../../components/FeedGrid';
 import Spinner from '../../components/Spinner';
 import * as feedActions from '../../actions/feed';

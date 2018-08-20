@@ -1,7 +1,6 @@
 import * as searchActions from '../actions/search';
 
 const initState = {
-  input: '',
   searchedInput: '',
   nextPageToken: '',
   results: [],
@@ -12,11 +11,6 @@ const initState = {
 
 export default (state = initState, action) => {
   switch (action.type) {
-    case searchActions.SET_INPUT:
-      return {
-        ...state,
-        input: action.input,
-      };
     case searchActions.SEARCH.REQUEST:
     case searchActions.SEARCH_MORE.REQUEST:
       return {

@@ -54,14 +54,12 @@ class App extends React.Component {
   }
 
   render() {
-    const { searchInput, setSearchInput, search, topBarIsHidden } = this.props;
+    const { search, topBarIsHidden } = this.props;
     return (
       <AppContainer onScroll={this.handleScroll}>
         <TopBar
-          searchInput={searchInput}
-          onInputChange={setSearchInput}
-          search={search}
           isHidden={topBarIsHidden}
+          search={search}
         />
         <ContentContainer>
           <Switch>
@@ -76,14 +74,12 @@ class App extends React.Component {
 }
 
 const mapStateToProps = ({ search, nav }) => ({
-  searchInput: search.input,
   isSearching: search.isFetching,
   searchError: search.error,
   topBarIsHidden: nav.topBarIsHidden,
 });
 
 const mapDispatchToProps = dispatch => ({
-  setSearchInput: input => dispatch(searchActions.setInput(input)),
   search: input => dispatch(searchActions.search.request(input)),
   scrollUp: () => dispatch(navActions.scrollUp()),
   scrollDown: () => dispatch(navActions.scrollDown()),

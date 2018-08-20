@@ -9,16 +9,6 @@ const BASE_URL = 'https://www.googleapis.com/youtube/v3';
 const YT_KEY = process.env.REACT_APP_YT_KEY;
 
 
-/**
- * Even with debounce it doesn't give a good UX
- */
-const inputTriggerEpic = (action$, state$) => action$
-  .ofType(searchActions.SET_INPUT)
-  .filter(action => action.input)
-  .debounceTime(1000)
-  .switchMap(action => Observable.of(searchActions.search.request(action.input)));
-
-
 const searchEpic = (action$, state$) => action$
   .ofType(searchActions.SEARCH.REQUEST)
   .filter(action => action.input)
@@ -48,5 +38,4 @@ const searchMoreEpic = (action$, state$) => action$
 export default combineEpics(
   searchEpic,
   searchMoreEpic,
-  // inputTriggerEpic,
 )

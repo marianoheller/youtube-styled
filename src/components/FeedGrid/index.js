@@ -34,7 +34,7 @@ const FeedGrid = props => {
       <Grid>
         {props.videos.map((r, i) => (
           <VerticalBig
-            key={`${r.id.videoId}${i}`}
+            key={`${r.id.videoId || r.id}${i}`}
             {...r}
           />
         ))}

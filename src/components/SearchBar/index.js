@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { FaSearch } from 'react-icons/fa';
 
 
@@ -39,37 +40,38 @@ const SearchButton = styled.button`
 `;
 
 
-export default class SearchBar extends React.Component {
+class SearchBar extends React.Component {
   constructor() {
     super();
+    this.state = {
+      input: '',
+    };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleEnter = this.handleEnter.bind(this);
   }
 
   handleInputChange(e) {
-    const { onInputChange } = this.props;
-    onInputChange(e.target.value);
+    this.setState({ input: e.target.value })
   }
 
   handleEnter(e) {
-    if (e.keyCode === 13) {
-      this.handleSearch();
-    }
+    if (e.keyCode === 13) this.handleSearch();
   }
 
   handleSearch() {
-    const { searchInput, search } = this.props;
-    search(searchInput);
+    const { search } = this.props;
+    const { input } = this.state;
+    search(input);
   }
 
   render() {
-    const { searchInput } = this.props;
+    const { input } = this.state;
     return (
       <Container>
         <StyledInput
           type="text"
-          value={searchInput}
+          value={input}
           onChange={this.handleInputChange}
           onKeyDown={this.handleEnter}
         />
@@ -80,3 +82,9 @@ export default class SearchBar extends React.Component {
     );
   }
 };
+
+SearchBar.propTypes = {
+  search: PropTypes.func.isRequired,
+}
+
+export default SearchBar;
