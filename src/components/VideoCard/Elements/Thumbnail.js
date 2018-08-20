@@ -41,7 +41,7 @@ const Thumbnail = props => {
   return (
     <React.Fragment>
       <Image src={props.url} />
-      { props.hasOverlay &&
+      { props.hasHoverEffect &&
         <Overlay>
           <PlayIcon />
         </Overlay>
@@ -52,12 +52,12 @@ const Thumbnail = props => {
 
 Thumbnail.propTypes = {
   url: PropTypes.string,
-  hasOverlay: PropTypes.bool,
+  hasHoverEffect: PropTypes.bool,
 }
 
 Thumbnail.defaultProps = {
   url: 'https://via.placeholder.com/320x180',
-  hasOverlay: false,
+  hasHoverEffect: false,
 }
 
 export default Thumbnail;

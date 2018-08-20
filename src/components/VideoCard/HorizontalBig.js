@@ -13,8 +13,7 @@ flex-direction: row;
 cursor: pointer;
 padding: 0.5rem 1rem;
 
-&:hover {
-  /* Did it this way cuz couldn't override underline if set in another way */
+/* &:hover {
   & > div > div > div:first-child {
     text-decoration: underline;
   }
@@ -25,8 +24,8 @@ padding: 0.5rem 1rem;
   & > div:first-child > div {
     opacity: 1;
   }
-}
-`
+} */
+`;
 
 const ImageContainer = styled.div`
 height: 100%;
