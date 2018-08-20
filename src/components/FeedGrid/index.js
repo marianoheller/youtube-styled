@@ -1,15 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import Item from './Item';
+import PropTypes from 'prop-types';
+import VerticalBig from '../VideoCard/VerticalBig';
 
 const Container = styled.div`
   width: 100%;
   height: 100%;
-  padding: 2rem;
   
   @media only screen and (max-width: 600px) {
-    margin-top: 3rem;
   }
 `;
 
@@ -30,13 +28,23 @@ const Grid = styled.div`
   }
 `
 
-export default () => {
-  const items = [1,2,3,4, 2,45,5,6,6,4,4,5,6,76,7,3,4,1,2,3,4];
+const FeedGrid = props => {
   return (
     <Container>
       <Grid>
-        {items.map((e, i) => <Item key={`${e}_${i}`}>{e}</Item>)}
+        {props.videos.map((r, i) => (
+          <VerticalBig
+            key={`${r.id.videoId}${i}`}
+            {...r}
+          />
+        ))}
       </Grid>
     </Container>
   )
 }
+
+FeedGrid.propTypes = {
+  videos: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+}
+
+export default FeedGrid;

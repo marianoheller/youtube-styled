@@ -14,7 +14,7 @@ const getHomeEpic = (action$, state$) => action$
   .switchMap(action => (
     Observable.from(
       axios.get(
-        `${BASE_URL}/activities?part=snippet,contentDetails&home=true&key=${YT_KEY}`
+        `${BASE_URL}/videos?part=snippet&chart=mostPopular&regionCode=US&maxResults=25&key=${YT_KEY}`
       )
     )
     .switchMap(r => Observable.of(feedActions.getHome.success(r.data.items, r.data.nextPageToken)))
