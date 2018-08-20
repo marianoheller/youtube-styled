@@ -24,6 +24,6 @@ const topBarShowEpic = (action$, state$) => action$
 
 
 export default combineEpics(
-  topBarHideEpic,
-  topBarShowEpic
+  /* topBarHideEpic,
+  topBarShowEpic */
 )

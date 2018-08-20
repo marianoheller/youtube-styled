@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import logo from './logo.svg';
 
 import SearchBar from '../SearchBar';
 
@@ -35,11 +36,6 @@ const _Container = styled.div`
 const ContainerLeft = _Container.extend`
 `;
 
-const ContainerCenter = _Container.extend`
-  flex: 1;
-  max-width: 300px;
-`;
-
 const ContainerRight = _Container.extend``;
 
 const LogoContainer = styled(Link)`
@@ -48,27 +44,27 @@ const LogoContainer = styled(Link)`
   display: flex;
   justify-content: center;
   text-align: center;
+  padding-left: 1rem;
 `;
 
+const Logo = styled.img`
+  height: 1.25rem;
+`;
 
 const TopBar = props => (
   <TopBarContainer isHidden={props.isHidden}>
     <ContainerLeft>
       <LogoContainer to="/">
-        LOGO
+        <Logo src={logo} />
       </LogoContainer>
     </ContainerLeft>
-    
-    <ContainerCenter>
+
+    <ContainerRight>
       <SearchBar
         searchInput={props.searchInput}
         onInputChange={props.onInputChange}
         search={props.search}
       />
-    </ContainerCenter>
-
-    <ContainerRight>
-      RIGHT
     </ContainerRight>
   </TopBarContainer>
 );
