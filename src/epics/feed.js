@@ -18,7 +18,11 @@ const getHomeEpic = (action$, state$) => action$
       )
     )
     .switchMap(r => Observable.of(feedActions.getHome.success(r.data.items, r.data.nextPageToken)))
-    .catch(e => Observable.of(feedActions.getHome.failure(e.message)))
+    .catch(e => Observable.concat(
+      Observable.of(feedActions.getHome.failure(e.message)),
+      Observable.timer(5000)
+      .switchMap(() => Observable.of(feedActions.getHome.request()))
+    ))
   ));
 
 
