@@ -41,16 +41,16 @@ export default class Maximized extends Component {
     } = this.props;
     return (
       <Spring
-        from={{ opacity: 0, scale: 0.5, translate: 1 }}
+        from={{ opacity: 0, scale: 0.5, translate: 100 }}
         to={{ opacity: 1, scale: 1, translate: 0 }}
         native
       >
         {({ opacity, scale, translate}) => (
-          <MaximizedContainer styles={{
+          <MaximizedContainer style={{
             opacity: opacity.interpolate(o => o),
             scale: scale.interpolate(s => s),
             willChange: 'transform',
-            transform: translate.interpolate(t => `translate3d(0, ${0} ,0)`)
+            transform: translate.interpolate(t => `translate3d(0, ${t}px ,0)`)
           }}>
             <PlayerWrapper>
               <YouTubePlayer
