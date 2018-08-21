@@ -5,10 +5,6 @@ import VerticalBig from '../VideoCard/VerticalBig';
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
-  
-  @media only screen and (max-width: 600px) {
-  }
 `;
 
 const Grid = styled.div`

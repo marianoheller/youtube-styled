@@ -42,7 +42,6 @@ class Landing extends React.Component {
     const { isFetching, fetchError, homeVideos } = this.props;
     return (
       <Container>
-        {/* <SideBar/> */}
         <FeedGrid videos={homeVideos}/>
 
         { isFetching &&

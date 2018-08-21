@@ -37,6 +37,10 @@ const Svg = styled.svg`
 const Circle = styled.circle`
   stroke-dasharray: ${offset};
   stroke-dashoffset: 0;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  fill: none;
+
   transform-origin: center;
   animation:
     ${dash} ${`${duration}s`} ease-in-out infinite, 
@@ -52,14 +56,7 @@ const Spinner = props => {
       height={`${props.height}px`}
       viewBox="0 0 66 66"
     >
-      <Circle
-        fill="none"
-        stroke-width="6"
-        stroke-linecap="round"
-        cx="33"
-        cy="33"
-        r="30"
-      />
+      <Circle cx="33" cy="33" r="30" />
     </Svg>
   )
 }
