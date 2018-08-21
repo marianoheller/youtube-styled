@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch as _FaSearch } from 'react-icons/fa';
 
 
 const Container = styled.div`
@@ -13,6 +13,7 @@ const Container = styled.div`
   border-width: 1px;
   border-color: rgba(10,10,10,0.25);
   border-style: solid;
+  padding: 0.15rem;
 `;
 
 const StyledInput = styled.input`
@@ -37,6 +38,12 @@ const SearchButton = styled.button`
   &:focus {
     outline: none;
   }
+`;
+
+const FaSearch = styled(_FaSearch)`
+  height: 1rem;
+  width: 1rem;
+  color: hsl(0, 0%, 43.3%);
 `;
 
 
@@ -67,6 +74,7 @@ class SearchBar extends React.Component {
 
   render() {
     const { input } = this.state;
+    const { isSearching } = this.props;
     return (
       <Container>
         <StyledInput
@@ -76,7 +84,7 @@ class SearchBar extends React.Component {
           onKeyDown={this.handleEnter}
         />
         <SearchButton onClick={this.handleSearch}>
-          <FaSearch />
+          { isSearching ? <FaSearch /> : <FaSearch /> }
         </SearchButton>
       </Container>
     );
@@ -85,6 +93,7 @@ class SearchBar extends React.Component {
 
 SearchBar.propTypes = {
   search: PropTypes.func.isRequired,
+  isSearching: PropTypes.bool.isRequired,
 }
 
 export default SearchBar;

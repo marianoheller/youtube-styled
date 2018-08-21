@@ -30,7 +30,6 @@ const ContentContainer = styled.div`
 class App extends React.Component {
   constructor(props) {
     super(props);
-
     this.handleScroll = this.handleScroll.bind(this);
   }
 
@@ -44,21 +43,15 @@ class App extends React.Component {
   }
 
   handleScroll(event) {
-    if(lastScrollPos < event.currentTarget.scrollTop) {
-      this.props.scrollDown();
-      lastScrollPos = event.currentTarget.scrollTop;
-    } else if(lastScrollPos > event.currentTarget.scrollTop) {
-      this.props.scrollUp();
-      lastScrollPos = event.currentTarget.scrollTop;
-    }
+    lastScrollPos = event.currentTarget.scrollTop;
   }
 
   render() {
-    const { search, topBarIsHidden } = this.props;
+    const { search, isSearching } = this.props;
     return (
       <AppContainer onScroll={this.handleScroll}>
         <TopBar
-          isHidden={topBarIsHidden}
+          isSearching={isSearching}
           search={search}
         />
         <ContentContainer>
@@ -76,7 +69,6 @@ class App extends React.Component {
 const mapStateToProps = ({ search, nav }) => ({
   isSearching: search.isFetching,
   searchError: search.error,
-  topBarIsHidden: nav.topBarIsHidden,
 });
 
 const mapDispatchToProps = dispatch => ({

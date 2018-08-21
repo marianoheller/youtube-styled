@@ -19,12 +19,13 @@ const TopBarContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 
   box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.12);
   z-index: ${({ theme }) => theme.zIndex.ref + 2 };
 
-  transition: transform 1s;
-  transform: ${({ isHidden }) => `translate3d(0, ${isHidden ? '-100%' : '0%'}, 0)`};
+  /* transition: transform 1s;
+  transform: ${({ isHidden }) => `translate3d(0, ${isHidden ? '-100%' : '0%'}, 0)`}; */
 `;
 
 const _Container = styled.div`
@@ -54,7 +55,7 @@ const Logo = styled.img`
 `;
 
 const TopBar = props => (
-  <TopBarContainer isHidden={props.isHidden}>
+  <TopBarContainer>
     <ContainerLeft>
       <LogoContainer to="/">
         <Logo src={logo} />
@@ -63,6 +64,7 @@ const TopBar = props => (
 
     <ContainerRight>
       <SearchBar
+        isSearching={props.isSearching}
         search={props.search}
       />
     </ContainerRight>
@@ -71,7 +73,7 @@ const TopBar = props => (
 
 TopBar.propTypes = {
   search: PropTypes.func.isRequired,
-  isHidden: PropTypes.bool.isRequired,
+  isSearching: PropTypes.bool.isRequired,
 };
 
 export default TopBar;

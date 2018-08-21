@@ -27,7 +27,7 @@ const ChannelTitle = styled.div`
 
 const PublishedAt = styled.div`
   font-size: 0.6rem;
-  color: hsl(0, 0%, 53.3%);;
+  color: hsl(0, 0%, 53.3%);
 `;
 
 const MAX_LENGTH = 40;
