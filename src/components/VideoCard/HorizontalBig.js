@@ -7,39 +7,26 @@ import TextInfo from './Elements/TextInfo';
 
 
 const Container = styled.div`
-display: flex;
-flex-direction: row;
-/* border: 1px black solid; */
-cursor: pointer;
-padding: 0.5rem 1rem;
-
-/* &:hover {
-  & > div > div > div:first-child {
-    text-decoration: underline;
-  }
-  & > div:first-child > img {
-    opacity: 0.8;
-    filter: brightness(80%);
-  }
-  & > div:first-child > div {
-    opacity: 1;
-  }
-} */
+  display: flex;
+  flex-direction: row;
+  /* border: 1px black solid; */
+  cursor: pointer;
+  padding: 0.5rem 1rem;
 `;
 
 const ImageContainer = styled.div`
-height: 100%;
-flex: 1;
+  height: 100%;
+  flex: 1;
 `;
 
 
 const TextContainer = styled.div`
-height: 100%;
-flex: 1;
-padding-left: 1rem;
+  height: 100%;
+  flex: 1;
+  padding-left: 1rem;
 
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 `;
 
 const MenuContainer = styled.div``;

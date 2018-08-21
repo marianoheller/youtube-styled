@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import * as playerActions from '../../actions/player';
 import Maximized from './Maximized';
 import Minimized from './Minimized';
@@ -9,7 +10,7 @@ class PlayerContainer extends Component {
     const { isOpen, isMinimized, ...rest } = this.props;
     if (!isOpen) return null;
     if (!isMinimized) return <Maximized {...rest} />;
-    if (!isMinimized) return <Minimized {...rest} />;
+    return <Minimized {...rest} />;
   }
 }
 

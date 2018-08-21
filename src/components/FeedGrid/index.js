@@ -30,6 +30,7 @@ const FeedGrid = props => {
       <Grid>
         {props.videos.map((r, i) => (
           <VerticalBig
+            setVideo={props.setVideo}
             key={`${r.id.videoId || r.id}${i}`}
             {...r}
           />
@@ -40,6 +41,7 @@ const FeedGrid = props => {
 }
 
 FeedGrid.propTypes = {
+  setVideo: PropTypes.func.isRequired,
   videos: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 }
 

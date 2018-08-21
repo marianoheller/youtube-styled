@@ -22,7 +22,7 @@ const TopBarContainer = styled.div`
   align-items: center;
 
   box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.12);
-  z-index: ${({ theme }) => theme.zIndex.ref + 2 };
+  z-index: ${({ theme }) => theme.zIndex.ref + 1 };
 
   /* transition: transform 1s;
   transform: ${({ isHidden }) => `translate3d(0, ${isHidden ? '-100%' : '0%'}, 0)`}; */

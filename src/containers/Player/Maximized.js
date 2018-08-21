@@ -15,20 +15,23 @@ const MaximizedContainer = styled(animated.div)`
 
   display: flex;
   flex-direction: column;
+  z-index: ${({ theme }) => theme.zIndex.ref + 2 };
+  background-color: white;
 `;
 
 const PlayerWrapper = styled.div`
   height: 40vh;
+  background-color: black;
 `;
 
 const MinimizeButton = styled(_MinimizeIcon)`
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  top: 1.5rem;
+  left: 1.5rem;
 
-  width: 1rem;
-  height: 1rem;
-
+  width: 1.5rem;
+  height: 1.5rem;
+  color: white;
 `;
 
 export default class Maximized extends Component {
@@ -54,7 +57,7 @@ export default class Maximized extends Component {
           }}>
             <PlayerWrapper>
               <YouTubePlayer
-                url={url}
+                url={`http://www.youtube.com/watch?v=${url}`}
                 width="100%"
                 height="100%"
                 playing={isPlaying}

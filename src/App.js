@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import TopBar from './components/TopBar';
 import Landing from './containers/Landing';
 import SearchResults from './containers/SearchResults';
+import Player from './containers/Player';
 
 import * as searchActions from './actions/search';
 import * as navActions from './actions/nav';
@@ -61,6 +62,8 @@ class App extends React.Component {
             <Route path="*" render={() => <Redirect to="/" />} />
           </Switch>
         </ContentContainer>
+        
+        <Player />
       </AppContainer>
     );
   }

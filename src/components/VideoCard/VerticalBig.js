@@ -9,22 +9,8 @@ import TextInfo from './Elements/TextInfo';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  /* border: 1px black solid; */
   cursor: pointer;
   padding: 0.5rem 0;
-/* 
-  &:hover {
-    & > div > div > div:first-child {
-      text-decoration: underline;
-    }
-    & > div:first-child > img {
-      opacity: 0.8;
-      filter: brightness(80%);
-    }
-    & > div:first-child > div {
-      opacity: 1;
-    }
-  } */
 `;
 
 const SubContainer = styled.div`  
@@ -51,7 +37,7 @@ const MenuContainer = styled.div``;
 
 const VerticalBig = props => {
   return (
-    <Container>
+    <Container onClick={() => props.setVideo(props.id)}>
       <ImageContainer>
         <Thumbnail {...props.snippet.thumbnails.medium}/>
       </ImageContainer>
@@ -75,6 +61,8 @@ const VerticalBig = props => {
 
 
 VerticalBig.propTypes = {
+  setVideo: PropTypes.func.isRequired,
+
   etag: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   kind: PropTypes.string.isRequired,
