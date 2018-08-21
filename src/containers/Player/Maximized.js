@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Spring, animated } from 'react-spring';
 import YouTubePlayer from 'react-player/lib/players/YouTube';
 import { MdExpandMore as _MinimizeIcon } from "react-icons/md";
 
 
-const MaximizedContainer = styled.div`
+const MaximizedContainer = styled(animated.div)`
   position: absolute;
   top: 0;
   left: 0;
@@ -39,20 +40,35 @@ export default class Maximized extends Component {
       setMinimized,
     } = this.props;
     return (
-      <MaximizedContainer>
-        <PlayerWrapper>
-          <YouTubePlayer
-            url={url}
-            width="100%"
-            height="100%"
-            playing={isPlaying}
-            volume={volume}
-            controls
-          />
-        </PlayerWrapper>
-
-        <MinimizeButton onClick={() => setMinimized(true)}/>
-      </MaximizedContainer>
+      <Spring
+        from={{ opacity: 0, scale: 0.5, translate: 1 }}
+        to={{ opacity: 1, scale: 1, translate: 0 }}
+        native
+      >
+        {({ opacity, scale, translate}) => (
+          <MaximizedContainer styles={{
+            opacity: opacity.interpolate(o => o),
+            scale: scale.interpolate(s => s),
+            willChange: 'transform',
+            transform: translate.interpolate(t => `translate3d(0, ${0} ,0)`)
+          }}>
+            <PlayerWrapper>
+              <YouTubePlayer
+                url={url}
+                width="100%"
+                height="100%"
+                playing={isPlaying}
+                volume={volume}
+                controls
+              />
+            </PlayerWrapper>
+    
+            <MinimizeButton onClick={() => setMinimized(true)}/>
+          </MaximizedContainer>
+        )}
+    
+      
+      </Spring>
     )
   }
 }
