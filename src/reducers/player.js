@@ -38,6 +38,11 @@ export default (state = initState, action) => {
         ...state,
         isPlaying: action.value,
       };
+    case playerActions.SET_LOOPING:
+      return {
+        ...state,
+        isLooping: action.value,
+      };
     case playerActions.SET_VOLUME:
       return {
         ...state,

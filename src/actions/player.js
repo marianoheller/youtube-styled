@@ -27,6 +27,12 @@ export const setVideo = url => createAction(SET_VIDEO, { url });
 export const SET_PLAYING = 'SET_PLAYING';
 export const setPlaying = value => createAction(SET_PLAYING, { value });
 
+/** ******************************************************************************
+ * LOOPING VIDEO
+ */
+export const SET_LOOPING = 'SET_LOOPING';
+export const setLooping = value => createAction(SET_LOOPING, { value });
+
 
 /** ******************************************************************************
  * SET VOLUME
