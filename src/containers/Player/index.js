@@ -12,6 +12,7 @@ import { MdClose as _CloseIcon } from "react-icons/md";
 import { MdPlayArrow as _PlayIcon } from "react-icons/md";
 import { MdPause as _PauseIcon } from "react-icons/md";
 import { MdLoop as _LoopIcon } from "react-icons/md";
+import Slider from '../../components/Slider';
 
 
 const MainContainer = styled(animated.div)`
@@ -117,6 +118,7 @@ class PlayerContainer extends Component {
                   :
                   <PauseButton onClick={() => rest.setPlaying(false)}/>
                 }
+                <Slider value={rest.volume*100} onValChange={rest.setVolume} />
                 <LoopButton onClick={() => rest.setLooping(!rest.isLooping)}/>
                 <CloseButton onClick={() => rest.closePlayer()}/>
               </MinimizedControls>
@@ -161,6 +163,7 @@ const mapDispatchToProps = dispatch => ({
   setPlaying: val => dispatch(playerActions.setPlaying(val)),
   setLooping: val => dispatch(playerActions.setLooping(val)),
   setMinimized: val => dispatch(playerActions.setMinimized(val)),
+  setVolume: val => dispatch(playerActions.setVolume(val)),
   closePlayer: () => dispatch(playerActions.closePlayer()),
 });
 
