@@ -99,7 +99,10 @@ class PlayerContainer extends Component {
               transform: translate.interpolate(t => `translate3d(0, ${t}px ,0)`)
             }}
           >
-            <PlayerWrapper isMinimized={isMinimized}>
+            <PlayerWrapper
+              isMinimized={isMinimized}
+              onClick={ !isMinimized ? () => {} : () => rest.setMinimized(false) }
+            >
               <YouTubePlayer
                 url={`http://www.youtube.com/watch?v=${rest.url}`}
                 width="100%"
